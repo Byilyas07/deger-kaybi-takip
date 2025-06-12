@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Değer Kaybı Takip</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2e86de;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    #clock {
+      font-size: 16px;
+    }
+    .container {
+      padding: 20px;
+    }
+    .form-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .form-box label {
+      display: block;
+      margin-top: 10px;
+    }
+    .form-box input, .form-box select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-box button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    th {
+      background-color: #f9fafb;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 16px;
+      }
+      #clock {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Değer Kaybı Takip</h1>
+    <div id="clock"></div>
+  </header>
+  <div class="container">
+    <div class="form-box">
+      <label for="plaka">Plaka</label>
+      <input type="text" id="plaka">
+
+      <label for="arac_sahibi">Araç Sahibi</label>
+      <input type="text" id="arac_sahibi">
+
+      <label for="servis">Servis</label>
+      <input type="text" id="servis">
+
+      <label for="vekalet">Vekalet</label>
+      <select id="vekalet">
+        <option value="Alındı">Alındı</option>
+        <option value="Alınmadı">Alınmadı</option>
+      </select>
+
+      <label for="vekalet_tarih">Vekalet Tarihi</label>
+      <input type="date" id="vekalet_tarih">
+
+      <button onclick="alert('Kaydedildi')">Kaydet</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Plaka</th>
+          <th>Araç Sahibi</th>
+          <th>Servis</th>
+          <th>Vekalet</th>
+          <th>Vekalet Tarihi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>06ABC123</td>
+          <td>Ali Yılmaz</td>
+          <td>Yılmaz Servis</td>
+          <td>Alındı</td>
+          <td>2024-01-05</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const clock = document.getElementById('clock');
+      clock.innerText = now.toLocaleDateString('tr-TR', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
